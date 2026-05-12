@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<!-- =============================== -->
+<!-- INICIO DEL HEAD (METADATOS Y ESTILOS) -->
+<!-- =============================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>Mis Listas - Cronogame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+<body>
+
+<!-- =============================== -->
+<!-- INICIO DEL HEADER (BARRA SUPERIOR Y LOGO) -->
+<!-- =============================== -->
+    <header style="position:relative;">
+        <div class="top-controls" style="position: absolute; top: 10px; right: 20px; display: flex; gap: 15px; align-items: center; justify-content:flex-end; z-index: 100; width:100%;">
+            <button id="theme-toggle" style="position:static;">☀️ Modo Claro</button>
+            <div id="header-auth-container"></div>
+        </div>
+        <h1 style="display:flex; justify-content:center; align-items:center; margin-top:50px;">
+            <a href="index.html" class="logo-link" style="display: flex; align-items: center; gap: 15px;">
+                <img src="Images/logo.png" alt="Cronogame Logo" class="main-logo">
+                <span>Cronogame</span>
+            </a>
+        </h1>
+        <p>Tu inventario personal de videojuegos</p>
+    </header>
+
+<!-- =============================== -->
+<!-- INICIO DEL MAIN (CONTENIDO PRINCIPAL) -->
+<!-- =============================== -->
+    <main class="page-content" style="max-width: 1000px; margin: 0 auto;">
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #333; padding-bottom:15px; margin-bottom:20px; flex-wrap:wrap; gap:10px;" class="light-theme-border">
+            <h2 style="margin:0;">Mis Listas</h2>
+            <div style="display:flex; gap:10px;">
+                <input type="text" id="new-list-name" placeholder="Nueva lista..." style="width:200px; padding:10px;">
+                <button onclick="handleCreateList()" style="padding:10px 15px;">Crear Lista</button>
+            </div>
+        </div>
+
+        <div id="dashboard-content" style="display:flex; flex-direction:column; gap:40px;">
+            <!-- Contenido Inyectado via JS -->
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+            <a href="index.html" class="dynamic-link-btn" style="display:inline-block; padding:12px 24px; text-decoration:none; border-radius:6px; font-weight: 500;">🎮 Ir al buscador para añadir juegos</a>
+        </div>
+    </main>
+
+    <style>
+        .light-theme .light-theme-border { border-color: #ddd !important; }
+        .list-card {
+            background-color: #171717; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden;
+        }
+        .light-theme .list-card {
+            background-color: #ffffff !important; border-color: #dddddd !important;
+        }
+        .list-header {
+            background-color: #222; padding: 15px 20px; border-bottom: 1px solid #333;
+        }
+        .light-theme .list-header {
+            background-color: #f4f5f7 !important; border-bottom-color: #ddd !important;
+        }
+        .list-body {
+            padding: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;
+        }
+        .game-item {
+            background-color: #111; border: 1px solid #333; border-radius: 6px; padding: 10px; display:flex; flex-direction:column; gap:10px; position:relative;
+        }
+        .light-theme .game-item {
+            background-color: #f9f9f9 !important; border-color: #ccc !important;
+        }
+    </style>
+
+<!-- =============================== -->
+<!-- INICIO DEL FOOTER (PIE DE PÁGINA) -->
+<!-- =============================== -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Cronogame. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-links">
+            <a href="contacto.html">Contacto</a>
+            <a href="terminos.html">Términos de servicio</a>
+            <a href="privacidad.html">Política de privacidad</a>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/listas.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!getCurrentUser()) {
+                window.location.href = "cuenta.html";
+                return;
+            }
+            renderDashboard();
+        });
+
+        function handleCreateList() {
+            const name = document.getElementById('new-list-name').value.trim();
+            if (!name) return alert("Escribe un nombre de lista");
+            if (createList(name)) {
+                document.getElementById('new-list-name').value = '';
+                renderDashboard();
+            } else {
+                alert("Esa lista ya existe");
+            }
+        }
+        
+        function removeGame(listName, gameId) {
+            removeGameFromList(listName, gameId);
+            renderDashboard();
+        }
+
+        function renderDashboard() {
+            const lists = getLists();
+            const container = document.getElementById('dashboard-content');
+            container.innerHTML = '';
+            
+            if (Object.keys(lists).length === 0) {
+                container.innerHTML = '<p class="text-secondary">Aún no tienes listas de juegos. Crea una arriba.</p>';
+                return;
+            }
+            
+            // Loop enumerando todo el DB
+            for (let listName in lists) {
+                const arr = lists[listName];
+                
+                let gamesHtml = '';
+                if (arr.length === 0) {
+                    gamesHtml = `<p class="text-secondary" style="font-size:0.9rem;">No hay juegos en esta lista. Busca uno y ánadelo aquí.</p>`;
+                } else {
+                    arr.forEach(g => {
+                        let shortName = g.name.length > 25 ? g.name.substring(0,25) + '...' : g.name;
+                        gamesHtml += `
+                            <div class="game-item">
+                                <button onclick="removeGame('${listName}', '${g.id}')" style="position:absolute; top:5px; right:5px; background:rgba(255,0,0,0.8); color:white; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; font-size:12px; padding:0;">✕</button>
+                                <img src="${g.background_image || ''}" style="width:100%; height:130px; object-fit:cover; border-radius:4px; opacity:0.9;">
+                                <div>
+                                    <h4 style="margin:5px 0; font-size:1rem; color:inherit;">${shortName}</h4>
+                                    <div style="display:flex; gap:10px; align-items:center;">
+                                        <span style="display:inline-block; padding:4px 8px; border-radius:20px; font-size:0.75rem; background-color:${getStatusColor(g.userStatus)}; color:white; font-weight:600;">${getStatusLabel(g.userStatus)}</span>
+                                        ${g.userRating ? `<span style="font-size:0.85rem; font-weight:bold; color:#ffae42;">⭐ ${g.userRating}/10</span>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                container.innerHTML += `
+                    <div class="list-card">
+                        <div class="list-header">
+                            <h3 style="margin:0;">📂 ${listName} <span style="font-size:0.8rem; font-weight:normal; opacity:0.7; margin-left:10px;">${arr.length} juegos</span></h3>
+                        </div>
+                        <div class="list-body">
+                            ${gamesHtml}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+

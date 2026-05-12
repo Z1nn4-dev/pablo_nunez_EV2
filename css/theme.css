@@ -1,0 +1,350 @@
+/* =============================== */
+/* ARCHIVO DE ESTILOS CSS: THEME.CSS */
+/* =============================== */
+/* --- LIGHT THEME OVERRIDES --- */
+.light-theme body {
+    background-color: #f4f5f7 !important;
+    background-image: none !important;
+    color: #333333 !important;
+}
+
+/* Forzar que la tipografía blanca nativa pase a oscura */
+.light-theme h1,
+.light-theme h2,
+.light-theme h3,
+.light-theme h4,
+.light-theme h5,
+.light-theme h6 {
+    color: #111111 !important;
+}
+
+.light-theme p,
+.light-theme label {
+    color: #444444 !important;
+}
+
+.light-theme strong {
+    color: #000000 !important;
+}
+
+.light-theme header {
+    color: #111111 !important;
+}
+
+.light-theme main.page-content,
+.light-theme main {
+    background-color: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-color: rgba(221, 221, 221, 0.5) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+.light-theme header h1 a {
+    color: #111111 !important;
+}
+
+.light-theme header p {
+    color: #666666 !important;
+}
+
+.light-theme input {
+    background-color: rgba(255, 255, 255, 0.01) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    color: #111111 !important;
+    border-color: rgba(204, 204, 204, 0.5) !important;
+}
+
+.light-theme input::placeholder {
+    color: #888888 !important;
+}
+
+.light-theme input:focus {
+    border-color: #111111 !important;
+    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.2) !important;
+}
+
+/* El botón calcular y normales (no el de toggle) */
+.light-theme button:not(#theme-toggle) {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border-color: #111111 !important;
+}
+
+.light-theme button:not(#theme-toggle):hover {
+    background-color: #333333 !important;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: transparent;
+    color: inherit;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.light-theme #theme-toggle {
+    border-color: #ccc;
+}
+#theme-toggle:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+.light-theme #theme-toggle:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.light-theme #resultado, .light-theme .resultado-item {
+    background-color: #fafafa !important;
+    border-color: #eaeaea !important;
+    color: #333333 !important;
+}
+
+.light-theme .estimacion {
+    background-color: #f4f5f7 !important;
+    border-left-color: #111111 !important;
+    color: #222222 !important;
+}
+
+.light-theme .store-placeholder {
+    background-color: #f9f9f9 !important;
+    border-color: #cccccc !important;
+    color: #555555 !important;
+}
+
+.light-theme .store-placeholder:hover {
+    color: #111111 !important;
+    border-color: #999999 !important;
+}
+
+/* Filtro negro para los logos SVG en modo claro */
+.light-theme .store-icon {
+    filter: brightness(0) !important; 
+}
+
+.light-theme footer, .light-theme .footer-info p, .light-theme .footer-links a {
+    color: #555555 !important;
+    border-color: #dddddd !important;
+}
+
+.light-theme .footer-links a:hover {
+    color: #111111 !important;
+}
+
+/* SPINNER Y AUTOCOMPLETADO */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+.light-theme .loader {
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #111111;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-items {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #333;
+    border-top: none;
+    z-index: 99;
+    background-color: #1a1a1a;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    max-height: 250px;
+    overflow-y: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.light-theme .autocomplete-items {
+    background-color: #ffffff;
+    border-color: #cccccc;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.autocomplete-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #2a2a2a;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.light-theme .autocomplete-item {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.autocomplete-item:hover, .autocomplete-item.autocomplete-active {
+    background-color: #333333;
+}
+
+.light-theme .autocomplete-item:hover, .light-theme .autocomplete-item.autocomplete-active {
+    background-color: #f0f0f0;
+}
+
+.ver-mas-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    border-radius: 6px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ver-mas-btn:hover {
+    background-color: rgba(0,255,255,0.1);
+}
+
+.light-theme .ver-mas-btn {
+    color: #111111;
+    border-color: #111111;
+}
+
+.light-theme .ver-mas-btn:hover {
+    background-color: rgba(17, 17, 17, 0.1);
+}
+
+.light-theme .text-secondary {
+    color: #666666 !important;
+}
+
+.light-theme .text-primary {
+    color: #111111 !important;
+}
+
+.light-theme .no-image-placeholder {
+    background-color: #eeeeee !important;
+    color: #555555 !important;
+}
+
+/* Modales y Botón Agregar a Lista */
+.add-to-list-btn {
+    background-color: transparent !important;
+    border: 1px solid #00ce7a !important;
+    color: #00ce7a !important;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-top: 15px;
+    width: 100%;
+}
+.add-to-list-btn:hover {
+    background-color: rgba(0, 206, 122, 0.1) !important;
+}
+.light-theme .add-to-list-btn {
+    border-color: #111111 !important;
+    color: #111111 !important;
+}
+.light-theme .add-to-list-btn:hover {
+    background-color: rgba(17, 17, 17, 0.1) !important;
+    color: #000000 !important;
+}
+
+.dynamic-link-btn {
+    background-color: #ffffff;
+    color: #000000 !important;
+}
+.light-theme .dynamic-link-btn {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+}
+
+.light-theme #add-game-modal .modal-content {
+    background: #ffffff !important;
+    border-color: #cccccc !important;
+    color: #111111 !important;
+}
+.light-theme #add-game-modal select, .light-theme #add-game-modal button.close-btn {
+    background: #f4f5f7 !important;
+    color: #333333 !important;
+    border-color: #cccccc !important;
+}
+
+/* Auth buttons light override */
+.light-theme .auth-login-btn {
+    color: #111111 !important;
+    border-color: #111111 !important;
+}
+.light-theme .auth-login-btn:hover {
+    background-color: rgba(17, 17, 17, 0.05) !important;
+}
+.light-theme .user-btn {
+    color: #111111 !important;
+    border-color: #cccccc !important;
+}
+.light-theme .user-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+.light-theme .logout-btn {
+    color: #d32f2f !important;
+    border-color: #d32f2f !important;
+}
+.light-theme .logout-btn:hover {
+    background-color: rgba(211, 47, 47, 0.1) !important;
+}
+
+/* Ajustes específicos para formularios con apariencia oscura dentro de páginas claras */
+.light-theme .light-theme-compatible {
+    background-color: #ffffff !important;
+    color: #222222 !important;
+    border-color: #e6e6e6 !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important;
+}
+.light-theme .light-theme-compatible label,
+.light-theme .light-theme-compatible p {
+    color: #444444 !important;
+}
+.light-theme .light-theme-compatible input,
+.light-theme .light-theme-compatible textarea,
+.light-theme .light-theme-compatible select {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border-color: #cccccc !important;
+}
+.light-theme .light-theme-compatible input::placeholder {
+    color: #888888 !important;
+}
+.light-theme .light-theme-compatible button {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border-color: #111111 !important;
+}
+

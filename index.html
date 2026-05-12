@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- =============================== -->
+<!-- INICIO DEL HEAD (METADATOS Y ESTILOS) -->
+<!-- =============================== -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>Cronogam-2026</title>
+    <!-- Google Fonts for Minimalist Theme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/background.css">
+</head>
+
+<body>
+
+    <!-- FONDO ANIMADO GIF MOSAICO -->
+    <div id="bg-gif-wrapper">
+        <div id="bg-gif-mover">
+            <!-- Los bloques del mosaico se generan dinámicamente -->
+        </div>
+    </div>
+
+
+
+    <!-- =============================== -->
+    <!-- INICIO DEL HEADER (BARRA SUPERIOR Y LOGO) -->
+    <!-- =============================== -->
+    <header style="position:relative;">
+        <div class="top-controls"
+            style="position: absolute; top: 10px; right: 20px; display: flex; gap: 15px; align-items: center; justify-content:flex-end; z-index: 100; width:100%;">
+            <button id="theme-toggle" style="position:static;">☀️ Modo Claro</button>
+        </div>
+        <h1 style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
+            <a href="index.html" class="logo-link" style="display: flex; align-items: center; gap: 15px;">
+                <img src="Images/logo.png" alt="Cronogame Logo" class="main-logo">
+                <span>Cronogame</span>
+            </a>
+        </h1>
+        <p>Porque cada hora de juego cuenta.</p>
+
+        <!-- =============================== -->
+        <!-- NAV - NAVEGACIÓN PRINCIPAL -->
+        <!-- =============================== -->
+        <nav class="nav-principal" aria-label="Navegación principal">
+            <a href="index.html" class="nav-link activo">Inicio</a>
+            <a href="registro.html" class="nav-link">Registro</a>
+            <a href="acceder.html" class="nav-link">Acceder</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- =============================== -->
+    <!-- INICIO DEL MAIN (CONTENIDO PRINCIPAL) -->
+    <!-- =============================== -->
+    <main>
+        <!-- =============================== -->
+        <!-- SECTION: BUSCADOR DE JUEGOS -->
+        <!-- =============================== -->
+        <section id="buscador-section">
+            <h2>Busca un juego y descubre su duración</h2>
+
+            <div class="search-form">
+                <div class="autocomplete-wrapper">
+                    <input type="text" id="nombreJuego" placeholder="Ej. The Witcher 3" autocomplete="on"
+                        style="width: 100%; box-sizing: border-box;">
+                </div>
+                <button onclick="consultarAPI()">Buscar Juego</button>
+            </div>
+
+            <div id="resultado" aria-live="polite">
+
+            </div>
+        </section>
+
+        <!-- =============================== -->
+        <!-- SECTION: CARRUSEL DE IMÁGENES (RAWG API) -->
+        <!-- =============================== -->
+        <section id="carrusel-section">
+            <h2>Descubre nuevos juegos</h2>
+            <p style="text-align:center; color:#aaaaaa; margin-bottom:20px;">📅 Últimos 30 días — Los juegos más recientes</p>
+
+            <!-- Contenedor del carrusel -->
+            <div class="carrusel-contenedor">
+                <button class="carrusel-btn carrusel-prev" id="carrusel-prev" aria-label="Imagen anterior">❮ Anterior</button>
+                <div class="carrusel-slide" id="carrusel-slide">
+                    <!-- El JS cargará aquí la imagen y datos del juego -->
+                    <div class="carrusel-loading">
+                        <div class="loader"></div>
+                        <p>Cargando juegos...</p>
+                    </div>
+                </div>
+                <button class="carrusel-btn carrusel-next" id="carrusel-next" aria-label="Imagen siguiente">Siguiente ❯</button>
+            </div>
+
+            <!-- Indicadores de posición -->
+            <div class="carrusel-indicadores" id="carrusel-indicadores">
+                <!-- Se generan dinámicamente con JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- =============================== -->
+    <!-- INICIO DEL FOOTER (PIE DE PÁGINA) -->
+    <!-- =============================== -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Cronogame. Todos los derechos reservados.</p>
+            <p>Datos proporcionados por la <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">API
+                    oficial de RAWG</a>.</p>
+            <p>Diseñado con estándares de accesibilidad (WCAG AA).</p>
+        </div>
+        <div class="footer-links">
+            <a href="contacto.html">Contacto</a>
+            <a href="terminos.html">Términos de servicio</a>
+            <a href="privacidad.html">Política de privacidad</a>
+        </div>
+        <script src="js/theme.js"></script>
+        <script src="js/listas.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/auth.js"></script>
+        <script src="js/background.js"></script>
+        <script src="js/validacion.js"></script>
+        <script src="js/carrusel.js"></script>
+</body>
+
+</html>

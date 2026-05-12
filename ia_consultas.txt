@@ -1,0 +1,89 @@
+=====================================
+ARCHIVO DE EVIDENCIAS: ia_consultas.txt
+Proyecto: Cronogame - EVA2
+Alumno: Pablo Núñez
+Fecha: Mayo 2026
+=====================================
+
+Este archivo contiene los prompts utilizados con inteligencia artificial
+para la creación de las validaciones de formularios y el carrusel de imágenes.
+
+=============================================
+CONSULTA 1 - Validación de formularios
+=============================================
+
+PROMPT:
+"Necesito crear una función en JavaScript llamada validarDatos() que reciba un objeto con los datos de un formulario y una lista de campos requeridos. La función debe verificar que ningún campo esté vacío y que los correos electrónicos tengan un formato válido usando una expresión regular. Debe retornar un objeto con la propiedad 'valido' (boolean) y 'errores' (array de strings). ¿Qué recomendaciones de seguridad debería aplicar?"
+
+RESPUESTA UTILIZADA:
+- Se implementó la función validarDatos(formData, camposRequeridos) en validacion.js
+- Se agregó validación de email con regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+- Recomendación de seguridad aplicada: función sanitizarInput() para escapar caracteres HTML y prevenir XSS
+- Se agregó validación de longitud mínima de contraseña (6 caracteres)
+
+=============================================
+CONSULTA 2 - Función actualizarDOM()
+=============================================
+
+PROMPT:
+"Crea una función JavaScript llamada actualizarDOM() que reciba un ID de elemento, un mensaje y un tipo (error, éxito, info). La función debe modificar el contenido de texto del elemento y cambiar su color según el tipo de mensaje. Debe servir para mostrar feedback de validación en formularios de registro, login y contacto."
+
+RESPUESTA UTILIZADA:
+- Se implementó actualizarDOM(elementId, mensaje, tipo) en validacion.js
+- Colores: error=#ff4444, éxito=#00ce7a, info=#aaaaaa
+- Se usa en los tres formularios: registroForm, loginForm y contactoForm
+
+=============================================
+CONSULTA 3 - Carrusel de imágenes con API
+=============================================
+
+PROMPT:
+"Quiero crear un carrusel de imágenes en JavaScript que obtenga datos de la API de RAWG (videojuegos). Debe mostrar los juegos lanzados en los últimos 30 días con sus imágenes de fondo. Necesito botones de 'Anterior' y 'Siguiente' que modifiquen el DOM para cambiar la imagen visible. También quiero indicadores (dots) para saber en qué imagen estoy y que avance automáticamente cada 4 segundos."
+
+RESPUESTA UTILIZADA:
+- Se creó carrusel.js con las funciones: inicializarCarrusel(), cargarJuegos(), cambiarImagenCarrusel(), actualizarSlide()
+- Se usa la API de RAWG con endpoint: /api/games?dates={hace30dias},{hoy}&ordering=-added&page_size=15
+- Los botones Anterior/Siguiente modifican el DOM llamando a cambiarImagenCarrusel(-1) y cambiarImagenCarrusel(1)
+- Se implementaron indicadores (dots) clicables y auto-avance con setInterval
+
+=============================================
+CONSULTA 4 - Sanitización de inputs
+=============================================
+
+PROMPT:
+"¿Cuáles son las mejores prácticas de seguridad para validar formularios en el frontend con JavaScript? Necesito prevenir ataques XSS en campos de texto donde el usuario puede ingresar su nombre, email y mensajes."
+
+RESPUESTA UTILIZADA:
+- Se creó la función sanitizarInput(texto) que escapa caracteres HTML especiales: &, <, >, ", '
+- Se aplica a todos los campos de texto antes de procesarlos
+- Se usa trim() para eliminar espacios innecesarios
+- Se valida el formato de email con expresión regular antes de aceptarlo
+
+=============================================
+CONSULTA 5 - Estructura semántica HTML
+=============================================
+
+PROMPT:
+"¿Cómo debo estructurar una página HTML5 usando etiquetas semánticas como header, nav, main, section y footer? Necesito que el header contenga navegación, el main tenga varias secciones (buscador y carrusel), y el footer tenga enlaces legales."
+
+RESPUESTA UTILIZADA:
+- Se agregó <nav> dentro del <header> con enlaces a: Inicio, Registro, Acceder, Contacto
+- Se envolvió el buscador en <section id="buscador-section">
+- Se envolvió el carrusel en <section id="carrusel-section">
+- El <footer> mantiene enlaces a Contacto, Términos y Privacidad
+- Cada formulario está dentro de su propia <section>
+
+=============================================
+CONSULTA 6 - Almacenamiento de usuarios
+=============================================
+
+PROMPT:
+"Necesito representar usuarios como objetos JavaScript con propiedades: nombre, correo, dirección, contraseña y fecha de creación. Los usuarios registrados deben almacenarse en un arreglo que persista usando localStorage. ¿Cómo puedo implementar funciones para registrar y autenticar usuarios?"
+
+RESPUESTA UTILIZADA:
+- Se creó user_data.js con:
+  - Objeto usuario: { nombre, correo, direccion, password, createdAt }
+  - Función getUsers() que retorna el arreglo de usuarios desde localStorage
+  - Función saveUsers(usersArray) que guarda el arreglo en localStorage
+  - Función registerUser() que crea un nuevo objeto usuario y lo agrega al arreglo
+  - Función authenticateUser() que busca en el arreglo un usuario que coincida

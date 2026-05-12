@@ -1,0 +1,64 @@
+/* =============================== */
+/* ARCHIVO DE ESTILOS CSS: FOOTER.CSS */
+/* =============================== */
+/* Minimalist Dark Theme Footer */
+footer {
+    background-color: transparent;
+    color: #666666; 
+    text-align: left;
+    padding: 2rem 0 1rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid #222222;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.footer-info p {
+    margin: 0.2rem 0;
+}
+
+.footer-info a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-info a:hover, .footer-info a:focus {
+    color: #ffffff;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover, .footer-links a:focus {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (min-width: 900px) {
+    footer {
+        grid-area: footer;
+        margin-top: 0;
+    }
+}
