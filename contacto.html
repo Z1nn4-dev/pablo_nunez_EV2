@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- =============================== -->
+<!-- INICIO DEL HEAD (METADATOS Y ESTILOS) -->
+<!-- =============================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>Contacto - Cronogame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body>
+
+<!-- =============================== -->
+<!-- INICIO DEL HEADER (BARRA SUPERIOR Y LOGO) -->
+<!-- =============================== -->
+    <header style="position:relative;">
+        <div class="top-controls"
+            style="position: absolute; top: 10px; right: 20px; display: flex; gap: 15px; align-items: center; justify-content:flex-end; z-index: 100; width:100%;">
+            <button id="theme-toggle" style="position:static;">☀️ Modo Claro</button>
+            <div id="header-auth-container"></div>
+        </div>
+        <h1 style="display:flex; justify-content:center; align-items:center; margin-top:50px;">
+            <a href="index.html" class="logo-link" style="display: flex; align-items: center; gap: 15px;">
+                <img src="Images/logo.png" alt="Cronogame Logo" class="main-logo">
+                <span>Cronogame</span>
+            </a>
+        </h1>
+        <p>Contacto</p>
+
+        <!-- =============================== -->
+        <!-- NAV - NAVEGACIÓN PRINCIPAL -->
+        <!-- =============================== -->
+        <nav class="nav-principal" aria-label="Navegación principal">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="registro.html" class="nav-link">Registro</a>
+            <a href="acceder.html" class="nav-link">Acceder</a>
+            <a href="contacto.html" class="nav-link activo">Contacto</a>
+        </nav>
+    </header>
+
+<!-- =============================== -->
+<!-- INICIO DEL MAIN (CONTENIDO PRINCIPAL) -->
+<!-- =============================== -->
+    <main class="page-content" style="max-width: 800px; margin: 0 auto;">
+        <!-- =============================== -->
+        <!-- SECTION: INFORMACIÓN DE CONTACTO -->
+        <!-- =============================== -->
+        <section id="contacto-info-section">
+            <h2>Ponte en contacto con nosotros</h2>
+            <p>Si tienes alguna pregunta, sugerencia o experimentaste algún problema técnico utilizando el buscador de
+                Cronogame, estaremos encantados de ayudarte.</p>
+
+            <p
+                style="margin-top: 20px; padding: 20px; background-color: #1a1a1a; border-radius: 8px; border: 1px solid #333333;">
+                <strong style="color: #00ffff;">Correo Electrónico:</strong> soporte@cronogame.com<br>
+                <strong style="color: #00ffff; display: inline-block; margin-top: 10px;">Redes Sociales:</strong>
+                @CronogameApp
+            </p>
+        </section>
+
+        <!-- =============================== -->
+        <!-- SECTION: FORMULARIO DE CONTACTO -->
+        <!-- =============================== -->
+        <section id="contacto-form-section" style="margin-top: 40px;">
+            <h3 style="margin-bottom: 20px;">Envíanos un mensaje</h3>
+
+            <form id="contactoForm"
+                style="background-color:#171717; padding:30px; border-radius:12px; border:1px solid #2a2a2a; text-align:left;"
+                class="light-theme-compatible">
+
+                <label for="contacto-nombre" style="display:block; margin-bottom:8px; font-weight:500;">Nombre</label>
+                <input type="text" id="contacto-nombre" name="nombre" placeholder="Tu nombre completo"
+                    required style="width:100%; box-sizing:border-box; margin-bottom:12px;">
+
+                <label for="contacto-email" style="display:block; margin-bottom:8px; font-weight:500;">Correo electrónico</label>
+                <input type="email" id="contacto-email" name="email" placeholder="tu@email.com"
+                    required style="width:100%; box-sizing:border-box; margin-bottom:12px;">
+
+                <label for="contacto-mensaje" style="display:block; margin-bottom:8px; font-weight:500;">Mensaje</label>
+                <textarea id="contacto-mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..."
+                    required rows="5"
+                    style="width:100%; box-sizing:border-box; margin-bottom:20px; padding:14px 16px; font-size:1rem; font-family:inherit; background-color:rgba(26,26,26,0.01); backdrop-filter:blur(5px); color:#ffffff; border:1px solid rgba(51,51,51,0.5); border-radius:6px; resize:vertical;"></textarea>
+
+                <button type="submit"
+                    style="width:100%; box-sizing:border-box; font-size:1.1rem; padding:15px;">Enviar Mensaje</button>
+
+                <p id="contacto-mensaje-estado" style="margin-top:12px;"></p>
+            </form>
+        </section>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="index.html" style="color: #ffffff; text-decoration: underline; font-weight: 500;">Volver al
+                buscador</a>
+        </div>
+    </main>
+
+<!-- =============================== -->
+<!-- INICIO DEL FOOTER (PIE DE PÁGINA) -->
+<!-- =============================== -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Cronogame. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-links">
+            <a href="contacto.html">Contacto</a>
+            <a href="terminos.html">Términos de servicio</a>
+            <a href="privacidad.html">Política de privacidad</a>
+        </div>
+    </footer>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/validacion.js"></script>
+    <script src="js/contacto.js"></script>
+</body>
+
+</html>

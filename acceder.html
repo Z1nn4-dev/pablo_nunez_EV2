@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- =============================== -->
+<!-- INICIO DEL HEAD (METADATOS Y ESTILOS) -->
+<!-- =============================== -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/logo.png">
+    <title>Acceder - Cronogame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/theme.css">
+</head>
+
+<body>
+
+    <!-- =============================== -->
+    <!-- INICIO DEL HEADER (BARRA SUPERIOR Y LOGO) -->
+    <!-- =============================== -->
+    <header style="position:relative;">
+        <div class="top-controls"
+            style="position: absolute; top: 10px; right: 20px; display: flex; gap: 15px; align-items: center; justify-content:flex-end; z-index: 100; width:100%;">
+            <button id="theme-toggle" style="position:static;">☀️ Modo Claro</button>
+            <div id="header-auth-container"></div>
+        </div>
+        <h1 style="display:flex; justify-content:center; align-items:center; margin-top:50px;">
+            <a href="index.html" class="logo-link" style="display: flex; align-items: center; gap: 15px;">
+                <img src="Images/logo.png" alt="Cronogame Logo" class="main-logo">
+                <span>Cronogame</span>
+            </a>
+        </h1>
+        <p>Autenticación de Usuario</p>
+
+        <!-- =============================== -->
+        <!-- NAV - NAVEGACIÓN PRINCIPAL -->
+        <!-- =============================== -->
+        <nav class="nav-principal" aria-label="Navegación principal">
+            <a href="index.html" class="nav-link">Inicio</a>
+            <a href="registro.html" class="nav-link">Registro</a>
+            <a href="acceder.html" class="nav-link activo">Acceder</a>
+            <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- =============================== -->
+    <!-- INICIO DEL MAIN (CONTENIDO PRINCIPAL) -->
+    <!-- =============================== -->
+    <main class="page-content" style="max-width: 500px; margin: 0 auto; text-align:center;">
+        <!-- =============================== -->
+        <!-- SECTION: FORMULARIO DE LOGIN -->
+        <!-- =============================== -->
+        <section id="login-section">
+            <h2 style="margin-bottom:10px;">¡Bienvenido de nuevo!</h2>
+            <p style="margin-bottom:30px;">Inicia sesión para acceder a tus listas y progreso de juegos.</p>
+
+            <form onsubmit="return loginFormSubmit(event)"
+                style="background-color:#171717; padding:30px; border-radius:12px; border:1px solid #2a2a2a; text-align:left;"
+                class="light-theme-compatible" id="login-box">
+
+                <label for="auth-username" style="display:block; margin-bottom:8px; font-weight:500;">Nombre de Usuario o
+                    Email</label>
+                <input type="text" id="auth-username" placeholder="Escribe tu usuario o email" required
+                    style="width:100%; box-sizing:border-box; margin-bottom:20px;">
+
+                <label for="auth-password" style="display:block; margin-bottom:8px; font-weight:500;">Contraseña</label>
+                <input type="password" id="auth-password" placeholder="Tu contraseña" required
+                    style="width:100%; box-sizing:border-box; margin-bottom:20px;">
+
+                <button type="submit"
+                    style="width:100%; box-sizing:border-box; font-size:1.1rem; padding:15px;">Acceder</button>
+
+                <p id="login-mensaje" style="margin-top:12px;"></p>
+            </form>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="index.html" style="color: inherit; text-decoration: underline; font-weight: 500;">⬅️ Volver a
+                    buscar juegos</a>
+            </div>
+        </section>
+    </main>
+
+    <style>
+        .light-theme #login-box {
+            background-color: #fafafa !important;
+            border-color: #eaeaea !important;
+        }
+    </style>
+
+    <!-- =============================== -->
+    <!-- INICIO DEL FOOTER (PIE DE PÁGINA) -->
+    <!-- =============================== -->
+    <footer>
+        <div class="footer-info">
+            <p>&copy; 2026 Cronogame. Todos los derechos reservados.</p>
+        </div>
+        <div class="footer-links">
+            <a href="contacto.html">Contacto</a>
+            <a href="terminos.html">Términos de servicio</a>
+            <a href="privacidad.html">Política de privacidad</a>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/user_data.js"></script>
+    <script src="js/validacion.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

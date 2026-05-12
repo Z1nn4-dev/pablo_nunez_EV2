@@ -1,0 +1,50 @@
+/* ===============================
+ESTILOS DEL FONDO ANIMADO GIF MOSAICO
+=============================== */
+#bg-gif-wrapper {
+    position: fixed;
+    top: calc(50vh - 75vmax);
+    left: calc(50vw - 75vmax);
+    width: 150vmax;
+    height: 150vmax;
+    z-index: -100;
+    opacity: 0; /* Empieza en 0 para ocultar la carga a parches */
+    transition: opacity 2s ease-in-out; /* Fade-in suave de 2 segundos */
+    pointer-events: none;
+    overflow: hidden;
+    background-color: #000;
+    transform: rotate(-45deg);
+}
+
+#bg-gif-wrapper.loaded {
+    opacity: 0.25; /* Opacidad final una vez cargado */
+}
+
+#bg-gif-mover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.gif-column {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+}
+
+.gif-tile {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* La propiedad "cover" recorta los bordes de resoluciones que no sean cuadradas 
+       para forzarlas a llenar las dimensiones sin aplastarse, normalizando todo. */
+}
+
+/* En modo claro bajamos más la opacidad para mantener buen contraste con textos oscuros */
+.light-theme #bg-gif-wrapper.loaded {
+    opacity: 0.1;
+    /* Filtros eliminados según la preferencia del usuario */
+}
